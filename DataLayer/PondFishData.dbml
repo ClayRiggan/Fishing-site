@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="PondFish" Class="PondFishDataDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename=|DataDirectory|\PondFish.mdf;Integrated Security=True" SettingsObjectName="DataLayer.Properties.Settings" SettingsPropertyName="PondFishConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Members" Member="Members">
+    <Type Name="Member">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="LastName" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="Phone" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Address2" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="City" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="Zip" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="IsAtive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DateAdded" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="Member_Boat" Member="Boats" ThisKey="Id" OtherKey="MemberId" Type="Boat" />
+      <Association Name="Member_Fish" Member="Fishes" ThisKey="Id" OtherKey="MemberId" Type="Fish" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Location" Member="Locations">
+    <Type Name="Location">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="State" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="GPS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="IsCoast" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="FishId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Location_Fish" Member="Fishes" ThisKey="Id" OtherKey="LocationId" Type="Fish" />
+      <Association Name="Fish_Location" Member="Fish" ThisKey="FishId" OtherKey="Id" Type="Fish" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Boats" Member="Boats">
+    <Type Name="Boat">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="HullNumber" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="PowerId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MemberId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Size" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Manufacturer" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="Model" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="Boat_Fish" Member="Fishes" ThisKey="Id" OtherKey="BoatId" Type="Fish" />
+      <Association Name="Member_Boat" Member="Member" ThisKey="MemberId" OtherKey="Id" Type="Member" IsForeignKey="true" />
+      <Association Name="PowerType_Boat" Member="PowerType" ThisKey="PowerId" OtherKey="Id" Type="PowerType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Fishs" Member="Fishes">
+    <Type Name="Fish">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Weight" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="Type" Type="System.String" DbType="VarChar(25)" CanBeNull="true" />
+      <Column Name="LocationId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Notes" Type="System.String" DbType="VarChar(MAX)" CanBeNull="true" />
+      <Column Name="BoatId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="MemberId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DateCaught" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="Length" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="IsDeleted" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Fish_Location" Member="Locations" ThisKey="Id" OtherKey="FishId" Type="Location" />
+      <Association Name="Boat_Fish" Member="Boat" ThisKey="BoatId" OtherKey="Id" Type="Boat" IsForeignKey="true" />
+      <Association Name="Location_Fish" Member="Location" ThisKey="LocationId" OtherKey="Id" Type="Location" IsForeignKey="true" />
+      <Association Name="Member_Fish" Member="Member" ThisKey="MemberId" OtherKey="Id" Type="Member" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.PowerType" Member="PowerTypes">
+    <Type Name="PowerType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Motor" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Peddle" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="Padel" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="PowerType_Boat" Member="Boats" ThisKey="Id" OtherKey="PowerId" Type="Boat" />
+    </Type>
+  </Table>
+</Database>

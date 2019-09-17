@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 8.5" name="PondFishData">
+  <DataContextMoniker Name="/PondFishDataDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b6145fee-cc40-4b5d-bc29-8f463c92dde6" absoluteBounds="1.125, 0.875, 2, 3.1170068359375">
+      <DataClassMoniker Name="/PondFishDataDataContext/Member" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cee4d4bb-ba68-4595-baba-3ac36ffdfa45" absoluteBounds="1.1400000000000001, 1.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ee77a92b-425c-4b0f-9231-cc9a99fdd679" absoluteBounds="4.25, 4.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/PondFishDataDataContext/Location" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c2483aa6-ed8a-4163-940d-29c44698b65e" absoluteBounds="4.265, 4.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="15fcab0e-718e-4465-8071-b239bc6a8e6e" absoluteBounds="6.5, 0.875, 2, 2.5401025390625">
+      <DataClassMoniker Name="/PondFishDataDataContext/Boat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="318cce62-79be-46c7-b238-e247b56c79e3" absoluteBounds="6.515, 1.335, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.125 : 1.03125); (6.5 : 1.03125)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PondFishDataDataContext/Member/Member_Boat" />
+      <nodes>
+        <classShapeMoniker Id="b6145fee-cc40-4b5d-bc29-8f463c92dde6" />
+        <classShapeMoniker Id="15fcab0e-718e-4465-8071-b239bc6a8e6e" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="630545cf-f37d-468c-87e7-193ee064a9da" absoluteBounds="4.125, 1.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/PondFishDataDataContext/Fish" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56877d45-ec95-4ea7-abb0-2ae7e65df834" absoluteBounds="4.14, 1.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(5.1875 : 3.98240397135417); (5.1875 : 4.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PondFishDataDataContext/Fish/Fish_Location" />
+      <nodes>
+        <classShapeMoniker Id="630545cf-f37d-468c-87e7-193ee064a9da" />
+        <classShapeMoniker Id="ee77a92b-425c-4b0f-9231-cc9a99fdd679" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(6.5 : 2.33255126953125); (6.125 : 2.33255126953125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PondFishDataDataContext/Boat/Boat_Fish" />
+      <nodes>
+        <classShapeMoniker Id="15fcab0e-718e-4465-8071-b239bc6a8e6e" />
+        <classShapeMoniker Id="630545cf-f37d-468c-87e7-193ee064a9da" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(5.71875 : 4.5); (5.71875 : 3.98240397135417)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/PondFishDataDataContext/Location/Location_Fish" />
+      <nodes>
+        <classShapeMoniker Id="ee77a92b-425c-4b0f-9231-cc9a99fdd679" />
+        <classShapeMoniker Id="630545cf-f37d-468c-87e7-193ee064a9da" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(3.125 : 2.61620198567708); (4.125 : 2.61620198567708)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PondFishDataDataContext/Member/Member_Fish" />
+      <nodes>
+        <classShapeMoniker Id="b6145fee-cc40-4b5d-bc29-8f463c92dde6" />
+        <classShapeMoniker Id="630545cf-f37d-468c-87e7-193ee064a9da" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="91ab571f-a852-489a-9abd-22c796086134" absoluteBounds="8.75, 0.875, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/PondFishDataDataContext/PowerType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="73c9c780-77c4-4d37-b24f-2cf405931db1" absoluteBounds="8.765, 1.335, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.75 : 1.66429768880208); (8.5 : 1.66429768880208)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/PondFishDataDataContext/PowerType/PowerType_Boat" />
+      <nodes>
+        <classShapeMoniker Id="91ab571f-a852-489a-9abd-22c796086134" />
+        <classShapeMoniker Id="15fcab0e-718e-4465-8071-b239bc6a8e6e" />
+      </nodes>
+    </associationConnector>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
